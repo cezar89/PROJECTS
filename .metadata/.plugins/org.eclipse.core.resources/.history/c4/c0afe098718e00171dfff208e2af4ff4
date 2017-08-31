@@ -1,0 +1,60 @@
+
+public class Rectangle extends Shape{
+	private int h;
+	private int w;
+	public Rectangle(){
+		super.setCenter(0, 0);
+		this.h = 0;
+		this.w = 0;
+	}
+	public Rectangle(Point center, int h, int w){
+		super(center);
+		this.h = h;
+		this.w = w;
+	}
+	public int[][] getBounds(){
+		int x = super.getCenter().getx();
+		int y = super.getCenter().gety();
+		
+		int[] lu = new int[2];//left upper = lu
+		int[] ru = new int[2];
+		int[] ld = new int[2];
+		int[] rd = new int[2];
+		
+		int[][] list= new int[4][2];
+		
+		lu[0] = x - this.w/2;// lu[x,y] , lu[0] is x
+		lu[1] = y + this.h/2;// y for the lu
+		ru[0] = x + this.w/2;
+		ru[1] = y + this.h/2;
+		ld[0] = x - this.w/2;		
+		ld[1] = y - this.h/2;
+		rd[0] = x + this.w/2;
+		rd[1] = y - this.h/2;
+		list[0]=lu;
+		list[1]=ru;
+		list[2]=ld;
+		list[3]=rd;		
+		return list;
+	}
+
+	public void setWidth(int w){
+		this.w = w;
+	}
+	public void setHeight(int h){
+		this.h = h;
+	}
+
+	public int[] getCenterPoint(){
+		int point[] = new int[2];
+		point [0] = super.getCenter().getx();
+		point [1] = super.getCenter().gety();
+		return point;
+	}
+	public int getw(){
+		return this.w;
+	}
+	public int geth(){
+		return this.h;
+	}
+}

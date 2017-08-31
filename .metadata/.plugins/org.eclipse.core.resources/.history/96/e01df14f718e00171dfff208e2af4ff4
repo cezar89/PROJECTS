@@ -1,0 +1,13 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Rectangle r = new Rectangle();
+		r.setCenter(1,1);
+		r.height(4);
+		r.width(6);
+		System.out.printf("rectangle has: w:%d and h:%d",r.getw(),r.geth());
+	}
+
+}

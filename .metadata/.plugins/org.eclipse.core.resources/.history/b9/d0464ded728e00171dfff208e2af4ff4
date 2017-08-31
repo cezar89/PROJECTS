@@ -1,0 +1,18 @@
+
+public abstract class Shape extends Point{
+	private Point center;
+	public Shape(){
+	}
+	public Shape(Point center){
+		this.center = center;
+	}
+
+	public Point getCenter(){
+		return this.center;
+	}
+	public void setCenter(int x,int y){
+		center.setx(x);
+		center.sety(y);
+	}
+	public abstract int[][] getBounds();
+}
