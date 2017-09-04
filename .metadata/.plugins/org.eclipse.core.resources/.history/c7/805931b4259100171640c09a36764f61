@@ -1,0 +1,14 @@
+public class Test {
+
+	public static void main(String[] args) {
+		int l[] = {0,1,2,3};
+		BinarySearch b = new BinarySearch(l);
+		
+		for(int s : l){
+			System.out.printf("the index is: %d\n",s);// b.findElement(s));	
+		}
+
+
+	}
+
+}

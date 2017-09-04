@@ -1,0 +1,37 @@
+
+public class BinarySearch {
+	private int listInt[] = new int[100];
+	public BinarySearch(int listInt[]){
+		this.listInt = listInt;
+	}
+	public int[] getList(){
+		return listInt;
+	}
+	
+	public int findElement(int elem){
+		int j = 0;
+		int k =0;
+		int i = listInt.length/2;
+		System.out.printf("length: %d\n", listInt.length/2);
+		/*put here the */
+		while(true){
+			k = k+2;
+			System.out.printf("i: %d\n", i);
+			if (listInt[i] == elem){
+				j = i;
+				break;
+			}
+			else if(listInt[i] >= elem){
+				i = i - i/k;
+				continue;
+			}
+			else{
+				i = i+i/k;
+				continue;
+			}
+		}
+		
+		return j;
+	}
+	
+}
