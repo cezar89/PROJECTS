@@ -9,28 +9,25 @@ public class BinarySearch {
 	}
 	
 	public int findElement(int elem){
-		int j = 0;
-		int i = listInt.length/2;
-		int s = 0;
-		/*put here the */
-		while(true){
-			s=i/2;
-			if (s==0){s=1;}
-			if (listInt[i] == elem){
-				j = i;
-				break;
+		int left = 0;
+		int right = listInt.length;
+		int middle = 0;
+		
+		while (left <= right){
+			middle =left + (right - left) / 2;
+			if (listInt[middle] == elem){
+				return middle;
 			}
-			else if(elem < listInt[i] ){
-				i = i - s;
-				continue;
+			else if (listInt[middle] < elem){
+				left = middle + 1;
 			}
+			
 			else{
-				i = i + s;
-				continue;
+				right = middle;
 			}
 		}
+		return -1;
 		
-		return j;
 	}
 	
 }
