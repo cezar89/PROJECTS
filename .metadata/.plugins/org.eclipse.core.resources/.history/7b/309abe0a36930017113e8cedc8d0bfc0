@@ -1,0 +1,20 @@
+
+public class LinkedList {
+	int data;
+	LinkedList next;
+	public LinkedList(){
+	}
+	
+	public void add(int data){
+		if (this.next == null){
+			this.data = data;
+		}
+		else {
+			System.out.println("You already have data in the front!");
+		}
+	}
+	
+	public String toString(){
+		return this.data + "";
+	}
+}

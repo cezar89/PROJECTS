@@ -1,0 +1,31 @@
+
+public class LinkedList {
+	private node first;
+	
+	public LinkedList(){
+		first = null;
+	}
+	
+	public boolean isEmpty(){
+		return first == null;
+	}
+	
+	public void insert(int data){
+		node next = new node(data);
+		next.next = first;
+		first = next;
+	}
+	
+	public node delete(){
+		node temp = first;
+		if(first == null){
+			return null;
+		}
+		first = first.next;
+		return temp;
+	}
+	public String toString(){
+		return this.first.data + "";
+	}
+	
+}

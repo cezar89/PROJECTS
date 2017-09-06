@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		stringNode front = null;
+		System.out.println(front);
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter a movie:");
+		
+		String data = sc.nextLine();
+		
+		addToFront(front , data);
+		System.out.println("the movie:"+front);
+	}
+	
+	public static void addToFront(stringNode front, String data){
+		stringNode temp = new stringNode(data , null);
+		temp.next = front;
+		front = temp;
+		
+	}
+
+}

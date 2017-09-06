@@ -1,0 +1,12 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		stringNode front = new stringNode(25,null);
+		
+		System.out.println(front);
+		
+		
+	}
+
+}

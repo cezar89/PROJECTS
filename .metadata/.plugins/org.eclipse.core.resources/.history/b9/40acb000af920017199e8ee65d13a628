@@ -1,0 +1,13 @@
+
+public class LinkedList {
+	LinkedList next;
+	int data;
+	public LinkedList(){
+	}
+	
+	public boolean setNext(int data){
+		this.next = new LinkedList();
+		next.data = data;
+		return true;
+	}
+}

@@ -1,0 +1,21 @@
+
+public class LinkedList {
+	int data = 0;
+	LinkedList next;
+	public LinkedList(){
+	}
+	
+	public LinkedList add(int data){
+		if (this.data == 0){
+			this.data = data;
+		}
+		else {
+			next.data = data;
+		}
+		return this.next;
+	}
+	
+	public String toString(){
+		return this.data + "";
+	}
+}
