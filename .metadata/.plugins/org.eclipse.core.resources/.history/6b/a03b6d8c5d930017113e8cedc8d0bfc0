@@ -1,0 +1,30 @@
+
+public class LinkedList {
+	node head;
+	public LinkedList(){
+	}
+	public void add(int data){
+		if (head == null){
+			head = new node(data);
+		}
+		else{
+			node temp = head;
+			while (temp != null){
+				temp.printNode();
+				temp =temp.next;
+			}
+			temp  = new node(data);
+			/*
+			node temp = new node(data);
+			temp.next = head;
+			head = temp;*/
+		}
+	}
+	public void printList(){
+		node temp = head;
+		while (temp != null){
+			temp.printNode();
+			temp =temp.next;
+		}
+	}
+}
