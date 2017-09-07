@@ -31,6 +31,16 @@ public class test {
 		l.printList();
 		System.out.print("\n");
 		
+		l.delete(4);
+		l.printList();
+		System.out.print("\n");
+		
+		l.delete(8);
+		l.delete(3);
+
+		l.delete(1);
+		l.printList();
+		System.out.print("\n");
 	}
 
 }
