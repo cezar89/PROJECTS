@@ -1,0 +1,36 @@
+
+public class tree {
+	
+	node head;
+	
+	public tree(){
+		head = new node();
+	}
+	
+	
+	public void add(int data){
+		if (head.data == 0){
+			head.data = data;
+		}
+		
+		else{
+			node cursor = head;
+			while(cursor != null){
+				
+				if (data == cursor.data){
+					break;
+				}
+				if (data < cursor.data){
+					cursor = cursor.left;
+				}
+				else{
+					cursor = cursor.right;
+				}
+			}
+			if(cursor == null){
+				cursor = new node();
+				cursor.data = data;
+			}
+		}
+	}
+}
