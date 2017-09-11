@@ -1,9 +1,0 @@
-
-public class classs {
-	    public static int bracket_match(String bracket_string) {
-	        int oc1 = StringUtils.countOccurrencesOf(bracket_string, "(");
-	        int oc2 = StringUtils.countOccurrencesOf(bracket_string, ")");
-	        return oc1;
-	    }
-	}
-}

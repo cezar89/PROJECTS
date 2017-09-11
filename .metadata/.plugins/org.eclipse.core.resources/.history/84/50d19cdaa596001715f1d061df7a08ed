@@ -1,0 +1,30 @@
+
+public class tree {
+	private node head;
+	
+	public tree(){
+		
+	}
+	
+	public void addInteger(int n){
+		if (head == null){
+			head = new node();
+			head.setData(n);
+		}
+		else{
+			node temp = head;
+			while (head != null){
+				if (head.getData() < n){
+					head = head.getRight();
+				}
+				else{
+					head = head.getLeft();
+				}
+			}
+			head = new node();
+			head.setData(n);
+			head = temp;
+			
+		}
+	}
+}
