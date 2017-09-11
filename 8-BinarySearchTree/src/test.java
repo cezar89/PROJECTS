@@ -12,9 +12,18 @@ public class test {
 		t.add(9);		
 		t.add(1);
 		
-		System.out.println("" + t.getTree(t.head));
+		//System.out.println("" + t.getTree(t.head));
 		
-		//System.out.println("" + t.getTreeOrdered(t.head));
+		tree.stack s = t.new stack();
+		s.push(t.head);
+		s.push(t.head.right);
+		s.push(t.head.left);
+		
+		System.out.println(s.pop().getData());
+		System.out.println(s.pop().getData());
+		System.out.println(s.pop().getData());
+		System.out.println(s.pop().getData());
+		System.out.println("line");
+		System.out.println(t.getLevels());
 	}
-
 }
