@@ -1,0 +1,10 @@
+class Node{
+	Node next;
+	int value;
+}
+// Your resolution 
+// Time complexity:  
+// Space complexity:  
+public Node reverse(Node head){
+}
+// JUnit test cases 

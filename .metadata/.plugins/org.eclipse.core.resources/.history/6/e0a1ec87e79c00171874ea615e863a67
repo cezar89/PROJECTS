@@ -1,0 +1,98 @@
+package QUESTION_2;
+
+class multDim {
+    // This is a provided function, Assume it works
+    public static Long getValue(int... indexOfDimension) {
+        //... 
+        return value;
+    }
+    
+    // lengthOfDimension: each dimension's length, assume it is valid: lengthOfDimension[i]>0.
+    public static Long sum(multDim mArray, int[] lengthOfDimension) {
+    	Long sum = (long) 0;
+    
+		int[] initial = adjustForIndex(lengthOfDimension);
+	    int[] list = new int[initial.length];
+	    copy(list,initial);
+	    int lastElem = list.length -1;
+	    
+	    while(true){
+	    	//ADD THE ELEMENT TO THE SUM
+	    	//ex: list = {1,2,0}
+	    	sum = sum +  getValue(list);
+	    	
+	    	//	IF ALL LENGTH OF DIMMENSIONS ARE 0, BREAK THE LOOP
+	    	//ex: 0 0 0 -> break, all the values were added
+	    	if(isZero(list)) break;
+	    	
+	    	//DECREASE THE LAST ELEMENT FROM THE DIMENSION LENGTH LIST
+	    	//ex:1 2 0  -> 1 2 -1
+	    	list[lastElem] = list[lastElem] - 1;
+	    	
+	    	//IF ONE ELEMENT IS -1, ADJUST IT TO THE INITIAL VALUE
+	    	//AND DECREASE BY ONE, THE ELEMENT TO THE LEFT OF IT
+	    	//ex:1 2 -1  -> 1 1 1
+	    	adjustToNormal(list,  initial); 	
+	    } 
+	    //NO RECURSION, NO ADDITIONAL SPACE
+	    //SPACE COMPLEXITY O(d) // d - size of lengthOfDimension[]
+	    //TIME COMPLEXITY O(n) // n - total number of values stored in the array
+	    return sum;
+	}
+	
+    
+	public static int[] adjustToNormal(int[] list, int[] initial){
+		//GO FROM ENT TO FRONT AND CHECK FOR -1 VALUES AND NORMALIZE THEM TO
+		//THE INITIAL VALUE FOUND IN THE INITIAL LIST
+		for(int i = list.length - 1 ; i >= 0  ; i--){
+			if (list[i] == -1){
+				//BRING THE VALUE -1 TO INITIAL VALUE
+				list[i]=initial[i];
+				//DECREASE BY ONE THE VALUE IN FRONT OF i;
+				list[i-1] = list[i-1] - 1;
+				//NOW WE HAVE TO MAKE SURE THAT THIS i-1 LOCATION DOES NOT HAVE -1
+				//SO WE INITIALIZE THE i TO IT'S INITIAL VALUE
+				i=list.length - 1;
+			}
+		}
+		return list;
+	}
+	
+	public static String getList(int[] list){
+		String str = "";
+		for(int i = 0 ; i< list.length ; i++){
+			str = str+" " + list[i];
+		}
+		return str;
+	}
+		
+	public static boolean isZero(int[] list){
+		int sumZero=0;
+		for(int i = 0 ; i< list.length ; i++){
+			sumZero += list[i];
+		}
+		if (sumZero == 0) return true;
+		return false;
+	}
+	//COPY THE 2 ARRAYS
+	public static int[] copy(int[] list,int[] initial){
+		for(int i = 0 ; i< initial.length ; i++){
+			list[i] = initial[i];
+		}
+		return list;
+	}
+	
+	//DECREASE BY 1 ALL THE VALUES FROM LENGTH OF DIMENSION
+	//TO BE ABLE TO HAVE THE RANGE FROM 0 TO (LENGTH-1)
+	public static int[] adjustForIndex(int[] dimLength){
+		int[] list=new int[dimLength.length];
+		for(int i = 0 ; i< dimLength.length ; i++){
+			list[i] = dimLength[i]-1;
+		}
+		return list;
+	}
+}
+
+ 
+
+	  

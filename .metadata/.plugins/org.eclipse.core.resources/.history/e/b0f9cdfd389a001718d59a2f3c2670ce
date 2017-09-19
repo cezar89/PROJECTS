@@ -1,0 +1,53 @@
+public class List {
+	
+	public Node head;
+	public Node last;
+	
+	public List(int data){
+		head = new Node();
+		head.value = data;
+	}
+	
+	public void insert(int data){
+		//IF THE HEAD DOESN'T HAVE A NEXT LINK, I CREATE A LINK AND ASSIGN
+		//IT TO THE LAST NODE
+		if (last == null){
+			head.next= new Node();
+			head.next.value = data;
+			last = head.next;
+		}
+		//I KEEP TRACK OF THE LAST LINK IN THE LIST SO THAT
+		//I CAN ADD ELEMENTS WITHOUT PARSING THROUGH THE LIST
+		else{
+			last.next = new Node();
+			last.next.value = data;
+			last = last.next;
+		}
+	}
+	
+    public Node reverse(Node head) {
+    	Node currentNode = head;
+    	Node previousNode = null;
+    	Node nextNode = null;
+    	while (currentNode != null){
+    		//GO THROUGH ALL THE NODES AND REVERSE THE LINKS
+    		nextNode = currentNode.next;
+    		currentNode.next = previousNode;
+    		previousNode = currentNode;
+    		currentNode = nextNode;
+    	}
+    	return previousNode;
+    }
+    
+    public String printList(){
+    	Node cursor = this.head;
+    	String str="";
+    	while (cursor != null){
+    		str = str +","+ cursor.value;
+    		cursor = cursor.next;
+    	}
+    	return str;
+    }
+	
+	
+}

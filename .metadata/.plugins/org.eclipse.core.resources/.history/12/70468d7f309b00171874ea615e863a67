@@ -1,0 +1,24 @@
+package QUESTION_2;
+
+public class multDim {
+
+	public static void main(String[] args) {
+	    
+		int[] initial = {2,5,6,7};
+	    int[] list = {2,5,6,7};
+	    checkZero(list);
+	  
+    
+  
+	  
+	}
+		
+	public static void checkZero(int[] list){
+		for(int i = 0 ; i< list.length-1 ; i--){
+	    	System.out.print(list[i] +"");
+		}
+    
+	}
+	  
+}
+	  

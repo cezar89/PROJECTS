@@ -1,0 +1,69 @@
+package question_1;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestCases {
+	@Test
+	public void lastElementBecomesTheHead() {
+		List testList = new List(-1);
+		testList.insert(-2);
+		testList.insert(-3);
+		testList.insert(4);
+		Node oldLastElement = testList.last;
+		Node newHeadElement = testList.reverse(testList.head);
+		assertEquals(oldLastElement,newHeadElement);
+	}
+	
+	@Test
+	public void reverseEmpty() {
+		List emptyList = new List();
+		
+		Node resultNode = emptyList.reverse(emptyList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("0",resultString);
+	}
+	
+	@Test
+	public void reverseOneElement() {
+		List oneElementList = new List(5);
+		
+		Node resultNode = oneElementList.reverse(oneElementList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("5",resultString);
+	}
+	
+	@Test
+	public void reverseMultipleElementList() {
+		List multipleElementList = new List(4);
+		multipleElementList.insert(6);
+		multipleElementList.insert(22);
+		multipleElementList.insert(55);
+		
+		Node resultNode = multipleElementList.reverse(multipleElementList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("55,22,6,4",resultString);
+	}
+	
+	@Test
+	public void reverseNull() {
+		List testList = new List();
+		assertEquals(null,testList.reverse(null));
+	}
+	
+	@Test
+	public void reverseSameValueElements() {
+		List testList = new List(-1);
+		testList.insert(-1);
+		testList.insert(-1);
+		testList.insert(-1);
+		
+		Node resultNode = testList.reverse(testList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("-1,-1,-1,-1",resultString);
+	}
+}

@@ -1,0 +1,12 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		List l = new List(2);
+		l.insert(4);
+		l.insert(8);
+		System.out.println(l.printList());
+
+	}
+
+}

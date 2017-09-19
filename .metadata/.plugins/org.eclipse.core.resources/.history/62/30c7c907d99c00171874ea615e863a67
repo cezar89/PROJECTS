@@ -1,0 +1,90 @@
+package QUESTION_3;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+public class separate{
+	
+	public  List<Integer> output = new ArrayList<Integer>();
+	public  List<Integer> copy ;
+	public  List<List<Integer>> combination = new ArrayList<List<Integer>>();
+	
+	
+
+	public boolean sep(List<Integer> list, int k){
+		
+		
+		//size of array
+		int len = list.size();
+		//if size of array is 0 return false
+		if (len == 0) return false;
+		//if size of array smaller than k return false
+		if (len < k) return false;
+		//if the average of the elements in the array is not divisible with k, return false
+		int s = sum(list);
+
+		if (s % k != 0) return false;
+		
+		int bucketSize = s / k;
+		System.out.println("Size: " + bucketSize);
+		//sort array list 
+		Collections.sort(list);
+		System.out.println("list before : "+list);
+		
+		//for each bucket (number of buckets)
+		for(int i = 1; i <= k ; i++){
+			//clear combination variable
+			combination = new ArrayList<List<Integer>>();
+			
+			//get all combinations possible from the given list
+			combinations(0,list);
+			
+			//go through all the combinations, from end to front
+			for (int j = combination.size()-1 ; j>=0 ; j--){
+				//calculate the sum of each combination
+				int bucket = sum(combination.get(j));
+				//check if sum is equal to my bucket size
+				if(bucket == bucketSize){
+					//if a match is found, remove from my list the elements in that combination
+							
+					System.out.println("bucket1: "+ combination.get(j) );
+					
+					list = removeElements(list,combination.get(j));
+					System.out.println("list after: "+list);
+					break;
+				}
+			}
+		}
+		//at the end of k iteration the list should be empty
+		if(list.size() == 0) return true;
+		else return false;
+	}
+
+	public  int sum(List<Integer> list){
+		int sum = 0;
+		for (int i = 0 ; i<list.size(); i++){
+			sum = sum + list.get(i);
+		}
+		return sum;
+	}
+
+	public  void combinations(int start , List<Integer> list ){
+		for( int i = start; i < list.size(); ++i ){
+			output.add( list.get(i) );
+			copy = new ArrayList<Integer>(output);
+			combination.add(copy);
+			//System.out.println( output );
+			if ( i < list.size()) combinations( i + 1, list);
+			
+			output.remove(output.size()-1);
+		}
+	}
+	public  List<Integer> removeElements(List<Integer> list, List<Integer> listToRemove){
+		for (int element : listToRemove ){
+			list.remove(list.indexOf(element));
+		}
+		return list;
+	}
+}

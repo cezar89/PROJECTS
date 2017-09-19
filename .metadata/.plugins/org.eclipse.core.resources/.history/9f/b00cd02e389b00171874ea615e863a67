@@ -1,0 +1,65 @@
+package QUESTION_2;
+
+public class multDim {
+
+	public static void main(String[] args) {
+	    
+		int[] initial = {2,5,6,7};
+	    int[] list = {1,0,0,2};
+	    int last = list.length -1;
+	    
+	    while(true){
+	    	//	IF ALL LENGTH OF DIMMENSIONS ARE 0, BREAK THE LOOP
+	    	if(isZero(list)) break;
+	    	
+	    	System.out.println(getList(list));
+	    	list[last]=list[last]-1;
+	    	adjustToNormal(list,  initial);
+	    	System.out.println(getList(list));
+	    	
+	    	
+	    }
+    
+  
+	  
+	}
+	public static int[] adjustToNormal(int[] list, int[] initial){
+		//GO FROM ENT TO FRONT AND CHECK FOR -1 VALUES AND NORMALIZE THEM TO
+		//THE INITIAL VALUE FOUND IN THE INITIAL LIST
+		for(int i = list.length - 1 ; i >= 0  ; i--){
+			if (list[i] == -1){
+				//BRING THE VALUE -1 TO INITIAL VALUE
+				list[i]=initial[i];
+				//DECREASE BY ONE THE VALUE IN FRONT OF i;
+				list[i-1] = list[i-1] - 1;
+				//NOW WE HAVE TO MAKE SURE THAT THIS i-1 LOCATION DOES NOT HAVE -1
+				//SO WE INITIALIZE THE i TO IT'S INITIAL VALUE
+				i=list.length - 1;
+			}
+		}
+
+		return list;
+	}
+	
+	public static String getList(int[] list){
+		String str = "";
+		for(int i = 0 ; i< list.length ; i++){
+			str = str+" " + list[i];
+		}
+		return str;
+	}
+		
+	public static boolean isZero(int[] list){
+		int sumZero=0;
+		for(int i = 0 ; i< list.length ; i++){
+			sumZero += list[i];
+		}
+		System.out.print(sumZero +"");
+		if (sumZero == 0){
+			return true;
+		}
+		return false;
+	}
+	  
+}
+	  

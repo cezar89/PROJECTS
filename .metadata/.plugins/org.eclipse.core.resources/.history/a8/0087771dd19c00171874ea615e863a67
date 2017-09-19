@@ -1,0 +1,116 @@
+package QUESTION_3;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+public class separate{
+	
+	public static List<Integer> output = new ArrayList<Integer>();
+	public static List<Integer> copy ;
+	public static List<List<Integer>> combination = new ArrayList<List<Integer>>();
+	
+	
+	public static void main(String[] args){
+		List<Integer> arr = new ArrayList<Integer>();
+		arr.add(2);
+		arr.add(1);
+		arr.add(4);
+		arr.add(5);	
+		arr.add(6);	
+		arr.add(3);
+		
+		int K = 3;
+	
+		if (sep(arr, K))
+			System.out.println("TRUE.\n");
+		else
+			System.out.println("FALSE.\n");
+	}
+
+	public static boolean sep(List<Integer> list, int k){
+		
+		
+		//size of array
+		int len = list.size();
+		//if size of array is 0 return false
+		if (len == 0) return false;
+		//if size of array is the same with k return true
+		if (len == k) return true;
+		//if size of array smaller than k return false
+		if (len < k) return false;
+		//if the average of the elements in the array is not divisible with k, return false
+		int s = sum(list);
+		
+
+
+		if (s % k != 0) return false;
+		
+		int bucketSize = s / k;
+		
+		//sort array list 
+		Collections.sort(list);
+		
+		for(int i = 1; i <= k ; i++){
+			//clear output2
+			combination = new ArrayList<List<Integer>>();
+			
+			//get all combinations possible from the given list
+			combinations(0,list);
+			for (int j = combination.size()-1 ; j>=0 ; j--){
+				//calculate the sum of each bucket 
+				int bucket = sum(combination.get(j));
+				//check if sum is equal to my bucket size
+				if(bucket == bucketSize){
+					//if a match is found, remove from my list the elements in that bucket
+					System.out.println("list before : "+list);
+					
+					System.out.println("bucket1: "+ combination.get(j) );
+					
+					list = removeElements(list,combination.get(j));
+					System.out.println("list after: "+list);
+				}
+			}
+			//System.out.println("HAHA "+ combination );
+
+			//1- get the specific combination combination
+			
+			
+			//2- remove from list the chosen values
+			//3- if i=k and list still has values, return false
+		}
+
+		return true;
+		
+		
+	}
+
+	public static int sum(List<Integer> list){
+		int sum = 0;
+		for (int i = 0 ; i<list.size(); i++){
+			sum = sum + list.get(i);
+		}
+		return sum;
+	}
+
+	
+	public static void combinations(int start , List<Integer> list ){
+		for( int i = start; i < list.size(); ++i ){
+			output.add( list.get(i) );
+			copy = new ArrayList<Integer>(output);
+			combination.add(copy);
+			//System.out.println( output );
+			if ( i < list.size()) combinations( i + 1, list);
+			
+			output.remove(output.size()-1);
+		}
+	}
+	public static List<Integer> removeElements(List<Integer> list, List<Integer> listToRemove){
+		for (int element : listToRemove ){
+			list.remove(list.indexOf(element));
+		}
+		
+		return list;
+	}
+}

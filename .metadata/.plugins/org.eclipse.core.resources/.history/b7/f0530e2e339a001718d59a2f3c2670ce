@@ -1,0 +1,13 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class problem1Test {
+
+	@Test
+	public void testReverse() {
+		problem1 test = new problem1();
+		String
+	}
+
+}

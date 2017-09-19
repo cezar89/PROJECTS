@@ -1,0 +1,85 @@
+package QUESTION_2;
+
+import java.util.Collections;
+
+public class multDim {
+
+	public static void main(String[] args) {
+	    
+		int[] dimLength = {2,4,2};
+		int[] initial = adjustForIndex(dimLength);
+	    int[] list = new int[initial.length];
+	    
+	    
+	    copy(list,initial);
+	    int last = list.length -1;
+	    System.out.println("haha" +getList(list));
+	    while(true){
+	    	//ADD THE ELEMENT TO THE SUM
+	    	System.out.println(getList(list));
+	    	
+	    	//	IF ALL LENGTH OF DIMMENSIONS ARE 0, BREAK THE LOOP
+	    	if(isZero(list)){
+	    		break;
+	    	}
+	    	//DECREASE THE LAST ELEMENT FROM THE DIMENSION LENGTH LIST
+	    	list[last]=list[last]-1;
+	    	
+	    	//IF ONE ELEMENT IS -1, ADJUST IT TO THE INITIAL VALUE
+	    	//AND DECREASE BY ONE THE ELEMENT TO THE LEFT OF IT
+	    	adjustToNormal(list,  initial); 	
+	    }
+    
+  
+	  
+	}
+	public static int[] adjustToNormal(int[] list, int[] initial){
+		//GO FROM ENT TO FRONT AND CHECK FOR -1 VALUES AND NORMALIZE THEM TO
+		//THE INITIAL VALUE FOUND IN THE INITIAL LIST
+		for(int i = list.length - 1 ; i >= 0  ; i--){
+			if (list[i] == -1){
+				//BRING THE VALUE -1 TO INITIAL VALUE
+				list[i]=initial[i];
+				//DECREASE BY ONE THE VALUE IN FRONT OF i;
+				list[i-1] = list[i-1] - 1;
+				//NOW WE HAVE TO MAKE SURE THAT THIS i-1 LOCATION DOES NOT HAVE -1
+				//SO WE INITIALIZE THE i TO IT'S INITIAL VALUE
+				i=list.length - 1;
+			}
+		}
+		return list;
+	}
+	
+	public static String getList(int[] list){
+		String str = "";
+		for(int i = 0 ; i< list.length ; i++){
+			str = str+" " + list[i];
+		}
+		return str;
+	}
+		
+	public static boolean isZero(int[] list){
+		int sumZero=0;
+		for(int i = 0 ; i< list.length ; i++){
+			sumZero += list[i];
+		}
+		if (sumZero == 0) return true;
+		return false;
+	}
+	public static int[] copy(int[] list,int[] initial){
+		for(int i = 0 ; i< initial.length ; i++){
+			list[i] = initial[i];
+		}
+		return list;
+	}
+	
+	public static int[] adjustForIndex(int[] dimLength){
+		int[] list=new int[dimLength.length];
+		for(int i = 0 ; i< dimLength.length ; i++){
+			list[i] = dimLength[i]-1;
+		}
+		return list;
+	}
+	  
+}
+	  

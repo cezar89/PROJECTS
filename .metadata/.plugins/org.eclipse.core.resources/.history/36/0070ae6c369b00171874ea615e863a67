@@ -1,0 +1,58 @@
+package QUESTION_2;
+
+public class multDim {
+
+	public static void main(String[] args) {
+	    
+		int[] initial = {2,5,6,7};
+	    int[] list = {2,5,6,7};
+	    
+	    while(true){
+	    	System.out.print(isZero(list));
+	    	System.out.print(getList(list));
+	    	adjustToNormal(int[] list, int[] initial);
+	    	System.out.print(getList(list));
+	    	
+	    	
+	    	break;
+	    	
+	    }
+    
+  
+	  
+	}
+	public static int[] adjustToNormal(int[] list, int[] initial){
+		//GO FROM ENT TO FRONT AND CHECK FOR -1 VALUES AND NORMALIZE THEM TO
+		//THE INITIAL VALUE FOUND IN THE INITIAL LIST
+		for(int i = list.length - 1 ; i >= 0  ; i--){
+			if (list[i] == -1){
+				list[i]=initial[i];
+				i=list.length - 1;
+			}
+		}
+
+		return list;
+	}
+	
+	public static String getList(int[] list){
+		String str = "";
+		for(int i = 0 ; i< list.length ; i++){
+			str = str+" " + list[i];
+		}
+		return str;
+	}
+		
+	public static boolean isZero(int[] list){
+		int sumZero=0;
+		for(int i = 0 ; i< list.length ; i++){
+			sumZero += list[i];
+		}
+		System.out.print(sumZero +"");
+		if (sumZero == 0){
+			return true;
+		}
+		return false;
+	}
+	  
+}
+	  

@@ -1,0 +1,44 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class reverseTest {
+
+	@Test
+	public void reverseEmpty() {
+		List emptyList = new List();
+		
+		Node resultNode = emptyList.reverse(emptyList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("0",resultString);
+	}
+	
+
+
+	@Test
+	public void reverseOneElement() {
+		List oneElementList = new List(5);
+		
+		Node resultNode = oneElementList.reverse(oneElementList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("5",resultString);
+	}
+	
+	
+
+	@Test
+	public void reverseMultipleElementList() {
+		List multipleElementList = new List(4);
+		multipleElementList.insert(6);
+		
+		Node resultNode = multipleElementList.reverse(multipleElementList.head);
+		List resultList = new List(resultNode);
+		String resultString = resultList.getList();
+		assertEquals("6,5",resultString);
+	}
+	
+	
+
+}

@@ -1,0 +1,18 @@
+
+public class test {
+
+	public static void main(String[] args) {
+		List l = new List();
+		l.insert(4);
+		l.insert(8);
+		l.insert(10);
+		l.insert(15);
+		System.out.println(l.printList());
+		l.reverse(l.head);
+		System.out.println(l.printList());
+		l.reverse(l.head);
+		System.out.println(l.printList());
+
+	}
+
+}
