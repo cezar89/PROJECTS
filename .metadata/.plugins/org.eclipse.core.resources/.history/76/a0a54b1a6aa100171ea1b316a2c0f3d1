@@ -1,0 +1,32 @@
+package StringEfficency;
+
+public class StringEf {
+
+	public static void main(String[] args) {
+		// First we check the time it takes to add 1 mil integers to a string
+		//with the usual method(a for loop)
+		long start = System.currentTimeMillis();
+		String s = "";;
+		for (int i = 0 ; i<10000 ; i++){
+			s = s+i+" ";
+		}
+		long stop = System.currentTimeMillis();
+		long total = stop - start;
+		System.out.println("The inneficient method:"+total);
+		
+		//Second we use the StringBuffer to create the string and
+		//then we assign it to the string
+		long start2 = System.currentTimeMillis();
+		StringBuffer b = new StringBuffer();
+		for (int i = 0 ; i<10000000 ; i++){
+			b.append(i);
+			b.append(" ");
+		}
+		String s2 = b.toString();
+		long stop2 = System.currentTimeMillis();
+		long total2 = stop2 - start2;
+		System.out.println("The eficient method:"+total2);
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package firstNonRepeating;
+
+public class testFirstNonRepeating {
+
+	public static void main(String[] args) {
+		FirstNonRepeating f = new FirstNonRepeating();
+		String s = "helloe";
+		char c = f.getNonRepeating(s);
+		System.out.println(c);
+	}
+}
